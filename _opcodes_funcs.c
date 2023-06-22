@@ -81,6 +81,22 @@ void _pop(stack_t **stack, unsigned int line_number)
 }
 
 
+/**
+ * _nop - nop opcode does nothing
+ * @stack: double pointer to head node
+ * @line_number: line number of instruction
+ *
+ * Return: Void
+ */
+void _nop(stack_t **stack, unsigned int line_number)
+{
+	(void)(*stack);
+	(void)(line_number);
+}
+
+
+
+
 
 
 /**
@@ -93,7 +109,7 @@ void _pop(stack_t **stack, unsigned int line_number)
 void _swap(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp;
-	
+
 	temp = (*stack);
 	if ((*stack) == NULL || (*stack)->next == NULL)
 	{
