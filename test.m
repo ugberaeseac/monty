@@ -1,4 +1,6 @@
 push 4
+pall
+push youtetouttu
 push 5 
 pall
 push1

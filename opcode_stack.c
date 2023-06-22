@@ -14,7 +14,7 @@ void _push(stack_t **stack, unsigned int line_number)
 	{
 		if (_isdigit(tokens[1][i]) != 1)
 		{
-			fprintf(stderr, "L%d: push integer\n", line_number);
+			fprintf(stderr, "L%d: usage: push integer\n", line_number);
 			free_dlistint(*stack);
 			exit(EXIT_FAILURE);
 		}
