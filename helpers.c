@@ -1,4 +1,6 @@
 #include "monty.h"
+#include "glo_var.h"
+
 /**
  * helper_push - function that add at the begining of the list
  * @head: pointer to the top of the stack
@@ -8,10 +10,11 @@ void helper_push(stack_t **head, unsigned int number)
 {
 	stack_t *new_node;
 
+	(void)number;
 	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
 		return;
-	new_node->n = number;
+	new_node->n = atoi(tokens[1]);
 	new_node->next = *head;
 	if (*head != NULL)
 		(*head)->prev = new_node;

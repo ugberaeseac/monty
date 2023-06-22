@@ -25,11 +25,6 @@ typedef struct stack_s
 	struct stack_s *next;
 } stack_t;
 
-
-extern stack_t *head;
-
-
-
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
@@ -44,11 +39,12 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-char **parsing_line(char *line);
+void parsing_line(char *line, unsigned int line_number);
 int _isdigit(int c);
-void check_opcodes(stack_t **stack, unsigned int lin_number);
+void check_opcodes(stack_t **stack, unsigned int line_number);
 void helper_push(stack_t **head, unsigned int number);
 void free_dlistint(stack_t *head);
+int test_space_line(char *line);
 
 void _push(stack_t **stack, unsigned int line_number);
 void _pop(stack_t **stack, unsigned int line_number);

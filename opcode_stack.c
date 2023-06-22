@@ -1,4 +1,5 @@
 #include "monty.h"
+#include "glo_var.h"
 
 /**
  * _push - function that add an element to the stack
@@ -9,17 +10,18 @@
 void _push(stack_t **stack, unsigned int line_number)
 {
 	int i = 0;
-	(void)line_number;
+	
 	while (tokens[1][i] != '\0')
 	{
 		if (_isdigit(tokens[1][i]) != 1)
 		{
 			fprintf(stderr, "L%d: push integer\n", line_number);
+			free_dlistint(*stack);
 			exit(EXIT_FAILURE);
 		}
 		i++;
 	}
-	helper_push(stack, abs(atoi(tokens[1])));
+	helper_push(stack, line_number);
 }
 
 /**
@@ -31,6 +33,7 @@ void _push(stack_t **stack, unsigned int line_number)
  */
 void _pall(stack_t **stack, unsigned int line_number)
 {
+	/*
 	stack_t *temp;
 
 	(void)line_number;
@@ -43,8 +46,18 @@ void _pall(stack_t **stack, unsigned int line_number)
 		printf("%d\n", temp->n);
 		temp = temp->next;
 	}
-}
+	*/
+	stack_t *current;
+	(void)line_number;
 
+	current = *stack;
+
+	while (current != NULL)
+	{
+		printf("%d\n", current->n);
+		current = current->next;
+	}
+} 
 /**
  * _pint - prints all the values at the top the stack
  * @stack: double pointer to head node
@@ -58,6 +71,7 @@ void _pint(stack_t **stack, unsigned int line_number)
 	if ((*stack) == NULL || stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty", line_number);
+		free_dlistint(*stack);
 		exit(EXIT_FAILURE);
 	}
 	else
@@ -82,6 +96,7 @@ void _pop(stack_t **stack, unsigned int line_number)
 	if ((*stack) == NULL || stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack", line_number);
+		free_dlistint(*stack);
 		exit(EXIT_FAILURE);
 	}
 
