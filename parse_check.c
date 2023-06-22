@@ -1,7 +1,7 @@
 #include "monty.h"
 #include "glo_var.h"
 
-char *tokens[3];
+
 /**
  * test_space_line - function to test the spaces
  * @line: pointer to the line in the file
@@ -22,6 +22,7 @@ int test_space_line(char *line)
 /**
  * parsing_line - function that parses the instruction
  * @line: line to be parsed
+ * @line_number: integer line number in the file
  * Return: returns an array of tokens exactly two
  */
 void parsing_line(char *line, unsigned int line_number)
@@ -44,6 +45,7 @@ void parsing_line(char *line, unsigned int line_number)
 /**
  * check_opcodes - function that check for valid command
  * @line_number: the line of instruction in the file
+ * @stack: pointer to the top of the stack
  * Return: returns 0 if no valid command
  * otherwise returns 1 if Yess and Execute the function to it
  */

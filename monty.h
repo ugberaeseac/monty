@@ -6,6 +6,7 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include <string.h>
+#include "glo_var.h"
 #define max_bytes 100
 
 

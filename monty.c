@@ -1,10 +1,13 @@
 #include "monty.h"
-#include "glo_var.h"
 
+extern char *tokens[3];
 /**
  * main - Entry point of the program
+ * @argc: number of commmand
+ * @argv: array of command
  * Return: 0 success
  */
+
 int main(int argc, char *argv[])
 {
 	FILE *file;
@@ -21,8 +24,8 @@ int main(int argc, char *argv[])
 
 	if (file == NULL)
 	{
-		fprintf(stderr,"Error: Can't open file %s\n", argv[1]);
-		return 1;
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		exit(EXIT_FAILURE);
 	}
 	while ((fgets(line, max_bytes, file)) != NULL)
 	{
@@ -34,6 +37,6 @@ int main(int argc, char *argv[])
 	}
 	free_dlistint(stack);
 	fclose(file);
-	return 0;
+	return (0);
 }
 

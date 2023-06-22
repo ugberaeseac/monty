@@ -10,7 +10,7 @@
 void _push(stack_t **stack, unsigned int line_number)
 {
 	int i = 0;
-	
+
 	while (tokens[1][i] != '\0')
 	{
 		if (_isdigit(tokens[1][i]) != 1)
