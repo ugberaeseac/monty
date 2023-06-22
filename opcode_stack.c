@@ -33,7 +33,6 @@ void _push(stack_t **stack, unsigned int line_number)
  */
 void _pall(stack_t **stack, unsigned int line_number)
 {
-	/*
 	stack_t *temp;
 
 	(void)line_number;
@@ -41,23 +40,12 @@ void _pall(stack_t **stack, unsigned int line_number)
 		return;
 
 	temp = (*stack);
-	while (temp->next != NULL)
+	while (temp != NULL)
 	{
 		printf("%d\n", temp->n);
 		temp = temp->next;
 	}
-	*/
-	stack_t *current;
-	(void)line_number;
-
-	current = *stack;
-
-	while (current != NULL)
-	{
-		printf("%d\n", current->n);
-		current = current->next;
-	}
-} 
+}
 /**
  * _pint - prints all the values at the top the stack
  * @stack: double pointer to head node

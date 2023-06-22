@@ -4,7 +4,6 @@
  * _add - adds the top two elements of the stack
  * @stack: double pointer to head node
  * @line_number: line number of instruction
- *
  * Return: Void
  */
 void _add(stack_t **stack, unsigned int line_number)
