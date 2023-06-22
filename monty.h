@@ -8,7 +8,6 @@
 #include <string.h>
 #define max_bytes 100
 
-extern char **tokens;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -46,8 +45,8 @@ typedef struct instruction_s
 } instruction_t;
 
 char **parsing_line(char *line);
-int check_opcodes(unsigned int line_number);
 int _isdigit(int c);
+void check_opcodes(stack_t **stack, unsigned int lin_number);
 void helper_push(stack_t **head, unsigned int number);
 void free_dlistint(stack_t *head);
 

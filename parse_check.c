@@ -5,24 +5,18 @@
  * @line: line to be parsed
  * Return: returns an array of tokens exactly two
  */
-char **parsing_line(char *line)
+void parsing_line(char *line)
 {
 	int i = 1;
 
-	tokens = malloc(sizeof(char *) * 3);
-	if (tokens == NULL)
-	{
-		fprintf(stderr, "Malloc Failed");
-		return (NULL);
-	}
 	tokens[0] = strtok(line, " \t");
-	while (i < 2)
+	if (strcmp(tokens[0], "push") == 0)
 	{
 		tokens[i] = strtok(NULL, " \t");
+
 		i++;
 	}
 	tokens[i] = NULL;
-	return (tokens);
 }
 /**
  * check_opcodes - function that check for valid command
@@ -30,7 +24,7 @@ char **parsing_line(char *line)
  * Return: returns 0 if no valid command
  * otherwise returns 1 if Yess and Execute the function to it
  */
-int check_opcodes(unsigned int line_number)
+void check_opcodes(stack_t **stack, unsigned int line_number)
 {
 	int i;
 
@@ -46,14 +40,16 @@ int check_opcodes(unsigned int line_number)
 		{"push", _push},
 		{NULL, NULL}
 	};
-	for (i = 0; instructions[i].opcode != NULL; i++)
+	if (*tokens[0] != '\0' && *tokens[0] != '#')
 	{
-		if (!strcmp(tokens[0], instructions[i].opcode))
+		for (i = 0; instructions[i].opcode != NULL; i++)
 		{
-			return (1);
+			if (!strcmp(tokens[0], instructions[i].opcode))
+			{
+				instructions[i].f(stack, line_number);
+			}
 		}
+		fprintf(stderr, "L:%d: unkown instruction\n", line_number);
+		exit(EXIT_FAILURE);
 	}
-	fprintf(stderr, "L:%d: unkown instruction\n", line_number);
-	exit(EXIT_FAILURE);
 }
-
