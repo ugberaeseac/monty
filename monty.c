@@ -1,6 +1,5 @@
 #include "monty.h"
 
-extern char *tokens[3];
 /**
  * main - Entry point of the program
  * @argc: number of commmand

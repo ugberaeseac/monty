@@ -6,9 +6,10 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include <string.h>
-#include "glo_var.h"
 #define max_bytes 100
 
+extern char *tokens[3];
+char *tokens[3];
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)

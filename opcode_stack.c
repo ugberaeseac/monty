@@ -1,5 +1,5 @@
 #include "monty.h"
-#include "glo_var.h"
+
 
 /**
  * _push - function that add an element to the stack

@@ -1,5 +1,4 @@
 #include "monty.h"
-#include "glo_var.h"
 
 
 /**

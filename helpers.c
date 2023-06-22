@@ -1,6 +1,5 @@
 #include "monty.h"
 
-extern char *tokens[3];
 /**
  * helper_push - function that add at the begining of the list
  * @head: pointer to the top of the stack
