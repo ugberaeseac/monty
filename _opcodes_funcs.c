@@ -9,18 +9,18 @@
  */
 void _pall(stack_t **stack, unsigned int line_number)
 {
-	(void)line_number;
-	stack_t *temp;
+        stack_t *temp;
 
-	if ((*stack) == NULL || stack == NULL)
-		return (NULL);
+        (void)(line_number);
+        if ((*stack) == NULL || stack == NULL)
+                return;
 
-	temp = (*stack);
-	while (temp->next != NULL)
-	{
-		fprintf(stderr, "%d\n", temp->n);
-		temp = temp->next;
-	}
+        temp = (*stack);
+        while (temp->next != NULL)
+        {
+                fprintf(stderr, "%d\n", temp->n);
+                temp = temp->next;
+        }
 }
 
 
@@ -36,13 +36,13 @@ void _pall(stack_t **stack, unsigned int line_number)
 void _pint(stack_t **stack, unsigned int line_number)
 {
 
-	if ((*stack) == NULL || stack == NULL)
-	{
-		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
-		exit(EXIT_FAILURE);
-	}
-	else
-		fprintf(stderr, "%d\n", stack->n);
+        if ((*stack) == NULL || stack == NULL)
+        {
+                fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+                exit(EXIT_FAILURE);
+        }
+        else
+                fprintf(stderr, "%d\n", (*stack)->n);
 }
 
 
@@ -57,26 +57,26 @@ void _pint(stack_t **stack, unsigned int line_number)
  */
 void _pop(stack_t **stack, unsigned int line_number)
 {
-	stack_t *temp;
+        stack_t *temp;
 
-	temp = (*stack);
-	if ((*stack) == NULL || stack == NULL)
-	{
-		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
-		exit(EXIT_FAILURE);
-	}
+        temp = (*stack);
+        if ((*stack) == NULL || stack == NULL)
+        {
+                fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+                exit(EXIT_FAILURE);
+        }
 
-	if ((*stack)->next == NULL)
-	{
-		(*stack) == NULL;
-		free(*temp);
-	}
-	else
-	{
-		(*stack) = (*stack)->next;
-		(*stack)->prev = NULL;
-		free(temp);
-	}
+        if ((*stack)->next == NULL)
+        {
+                (*stack) = NULL;
+                free(temp);
+        }
+        else
+        {
+                (*stack) = (*stack)->next;
+                (*stack)->prev = NULL;
+                free(temp);
+        }
 
 }
 
@@ -90,11 +90,9 @@ void _pop(stack_t **stack, unsigned int line_number)
  */
 void _nop(stack_t **stack, unsigned int line_number)
 {
-	(void)(*stack);
-	(void)(line_number);
+        (void)(*stack);
+        (void)(line_number);
 }
-
-
 
 
 
@@ -108,15 +106,13 @@ void _nop(stack_t **stack, unsigned int line_number)
  */
 void _swap(stack_t **stack, unsigned int line_number)
 {
-	stack_t *temp;
 
-	temp = (*stack);
-	if ((*stack) == NULL || (*stack)->next == NULL)
-	{
-		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
-		exit(EXIT_FAILURE);
-	}
-	else
-	{
-	}
+        if ((*stack) == NULL || (*stack)->next == NULL)
+        {
+                fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+                exit(EXIT_FAILURE);
+        }
+        else
+        {
+        }
 }

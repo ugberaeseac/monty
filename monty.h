@@ -1,9 +1,11 @@
 #ifndef MONTY_H
 #define MONTY_H
+#define max_bytes 10000
 
 #include <unistd.h>
 #include <stdio.h>
 #include <fcntl.h>
+#include <string.h>
 #include <stdlib.h>
 
 
@@ -18,14 +20,13 @@
  */
 typedef struct stack_s
 {
-	int n;
-	struct stack_s *prev;
-	struct stack_s *next;
+        int n;
+        struct stack_s *prev;
+        struct stack_s *next;
 } stack_t;
 
 
-extern stack_t **stack;
-
+extern stack_t *stack;
 
 
 /**
@@ -38,12 +39,17 @@ extern stack_t **stack;
  */
 typedef struct instruction_s
 {
-	char *opcode;
-	void (*f)(stack_t **stack, unsigned int line_number);
+        char *opcode;
+        void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 
-void _free_stack(stack_t **head);
+void _free_stack(stack_t *stack);
+char **parsing_line(char *line);
+void _add_node(stack_t **stack, int n);
+void _push(char *token, stack_t **stack, unsigned int line_number);
+int _atoi(char *str);
+void (*_check_opcodes(char *token))(stack_t **stack, unsigned int line_number);
 void _pop(stack_t **stack, unsigned int line_number);
 void _pall(stack_t **stack, unsigned int line_number);
 void _pint(stack_t **stack, unsigned int line_number);
