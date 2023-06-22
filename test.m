@@ -1,8 +1,7 @@
+push 4
+push 5 
 pall
-                    push 1 gfgfg
-push                2
+push1
+push 2
 push 3
-pint
-
- pop youtouto
 pall

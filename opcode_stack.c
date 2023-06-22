@@ -1,6 +1,5 @@
 #include "monty.h"
 
-
 /**
  * _push - function that add an element to the stack
  * @stack: pointer to the top of the stack
