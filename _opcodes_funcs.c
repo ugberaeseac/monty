@@ -18,7 +18,7 @@ void _pall(stack_t **stack, unsigned int line_number)
 	temp = (*stack);
 	while (temp->next != NULL)
 	{
-		printf("%d\n", temp->n);
+		fprintf(stderr, "%d\n", temp->n);
 		temp = temp->next;
 	}
 }
@@ -38,11 +38,11 @@ void _pint(stack_t **stack, unsigned int line_number)
 
 	if ((*stack) == NULL || stack == NULL)
 	{
-		printf("L%d: can't pint, stack empty", line_number);
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	else
-		printf("%d\n", stack->n);
+		fprintf(stderr, "%d\n", stack->n);
 }
 
 
@@ -62,7 +62,7 @@ void _pop(stack_t **stack, unsigned int line_number)
 	temp = (*stack);
 	if ((*stack) == NULL || stack == NULL)
 	{
-		printf("L%d: can't pop an empty stack", line_number);
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
@@ -93,18 +93,11 @@ void _pop(stack_t **stack, unsigned int line_number)
 void _swap(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp;
-	int count = 0;
-
+	
 	temp = (*stack);
-	while (temp != NULL)
+	if ((*stack) == NULL || (*stack)->next == NULL)
 	{
-		temp = temp->next;
-		count++;
-	}
-
-	if (count < 2)
-	{
-		printf("L%d: can't pop an empty stack", line_number);
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	else
