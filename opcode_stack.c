@@ -23,11 +23,11 @@ void _push(stack_t **stack, unsigned int line_number)
 			i++;
 		}
 		else if (!_isdigit(tokens[1][i]))
-        {
-            fprintf(stderr, "L%d: usage: push integer\n", line_number);
-            free_dlistint(*stack);
-            exit(EXIT_FAILURE);
-        }
+		{
+			fprintf(stderr, "L%d: usage: push integer\n", line_number);
+			free_dlistint(*stack);
+			exit(EXIT_FAILURE);
+		}
 		i++;
 	}
 	helper_push(stack, line_number);
