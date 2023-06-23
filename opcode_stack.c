@@ -16,7 +16,7 @@ void _push(stack_t **stack, unsigned int line_number)
 		{
 			if (_isdigit(tokens[1][i + 1]) != 1)
 			{
-				fprintf(stderr, "L%d: usage: push integer\n", line_number);
+				fprintf(stderr, "L%u: usage: push integer\n", line_number);
 				free_dlistint(*stack);
 				exit(EXIT_FAILURE);
 			}
@@ -24,7 +24,7 @@ void _push(stack_t **stack, unsigned int line_number)
 		}
 		else if (!_isdigit(tokens[1][i]))
 		{
-			fprintf(stderr, "L%d: usage: push integer\n", line_number);
+			fprintf(stderr, "L%u: usage: push integer\n", line_number);
 			free_dlistint(*stack);
 			exit(EXIT_FAILURE);
 		}
@@ -67,7 +67,7 @@ void _pint(stack_t **stack, unsigned int line_number)
 
 	if ((*stack) == NULL || stack == NULL)
 	{
-		fprintf(stderr, "L%d: can't pint, stack empty", line_number);
+		fprintf(stderr, "L%u: can't pint, stack empty", line_number);
 		free_dlistint(*stack);
 		exit(EXIT_FAILURE);
 	}
@@ -92,7 +92,7 @@ void _pop(stack_t **stack, unsigned int line_number)
 	temp = (*stack);
 	if ((*stack) == NULL || stack == NULL)
 	{
-		fprintf(stderr, "L%d: can't pop an empty stack", line_number);
+		fprintf(stderr, "L%u: can't pop an empty stack", line_number);
 		free_dlistint(*stack);
 		exit(EXIT_FAILURE);
 	}

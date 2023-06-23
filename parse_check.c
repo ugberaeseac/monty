@@ -78,7 +78,7 @@ void check_opcodes(stack_t **stack, unsigned int line_number)
 		}
 		if (instructions[i].opcode == NULL)
 		{
-			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, tokens[0]);
+			fprintf(stderr, "L%u: unknown instruction %s\n", line_number, tokens[0]);
 			free_dlistint(*stack);
 			exit(EXIT_FAILURE);
 		}
