@@ -13,8 +13,10 @@ void helper_push(stack_t **head, unsigned int number)
 	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
 		return;
+
 	new_node->n = atoi(tokens[1]);
 	new_node->next = *head;
+	new_node->prev = NULL;
 	if (*head != NULL)
 		(*head)->prev = new_node;
 	*head = new_node;
