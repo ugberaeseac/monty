@@ -32,10 +32,10 @@ void parsing_line(char *line, unsigned int line_number)
 	tokens[0] = NULL;
 	if (test_space_line(line))
 	{
-		tokens[0] = strtok(line, " \t");
+		tokens[0] = strtok(line, " \t\n");
 		if (strcmp(tokens[0], "push") == 0)
 		{
-			tokens[i] = strtok(NULL, " \t");
+			tokens[i] = strtok(NULL, " \t\n");
 			i++;
 		}
 		tokens[i] = NULL;
