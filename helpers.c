@@ -12,7 +12,10 @@ void helper_push(stack_t **head, unsigned int number)
 	(void)number;
 	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
-		return;
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
 
 	new_node->n = atoi(tokens[1]);
 	new_node->next = *head;
