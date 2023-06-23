@@ -62,6 +62,8 @@ void check_opcodes(stack_t **stack, unsigned int line_number)
 		{"div", _div},
 		{"mod", _mod},
 		{"push", _push},
+		{"pchar", _pchar},
+		{"pstr", _pstr},
 		{NULL, NULL}
 	};
 	if (tokens[0] != NULL && *tokens[0] != '\0' && *tokens[0] != '#')
