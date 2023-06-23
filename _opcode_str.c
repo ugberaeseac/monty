@@ -9,7 +9,7 @@
  */
 void _pchar(stack_t **stack, unsigned int line_number)
 {
-	if ((*stack) == NULL or stack == NULL)
+	if ((*stack) == NULL || stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
@@ -41,9 +41,10 @@ void _pstr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp;
 
+	(void)line_number;
 	temp = (*stack);
-	if ((*stack) == NULL or stack == NULL)
-		purchar('\n');
+	if ((*stack) == NULL || stack == NULL)
+		putchar('\n');
 
 	if ((*stack)->n <= 127 && (*stack)->n >= 0)
 	{
