@@ -8,6 +8,8 @@
  */
 void _add(stack_t **stack, unsigned int line_number)
 {
+	int sum = 0;
+
 	if ((*stack) == NULL || (*stack)->next == NULL)
 	{
 		printf("L%d: can't add, stack too short\n", line_number);
