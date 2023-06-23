@@ -43,7 +43,10 @@ void _pstr(stack_t **stack, unsigned int line_number)
 	(void)line_number;
 	temp = (*stack);
 	if ((*stack) == NULL || stack == NULL)
+	{
 		printf("\n");
+		return;
+	}
 
 	while ((temp != NULL) && (temp->n != 0) &&
 			(temp->n <= 127) && (temp->n >= 0))
