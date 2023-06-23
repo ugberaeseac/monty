@@ -45,9 +45,9 @@ void _pstr(stack_t **stack, unsigned int line_number)
 	if ((*stack) == NULL || stack == NULL)
 		putchar('\n');
 
-	if ((*stack)->n <= 127 && (*stack)->n >= 0)
+	if (temp != NULL && temp->n != 0)
 	{
-		while (temp != NULL && temp->n != 0)
+		while (temp->n <= 127 && temp->n >= 0)
 		{
 			printf("%c", temp->n);
 			temp = temp->next;
