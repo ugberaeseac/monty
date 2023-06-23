@@ -12,12 +12,22 @@ void _push(stack_t **stack, unsigned int line_number)
 
 	while (tokens[1][i] != '\0')
 	{
-		if (_isdigit(tokens[1][i]) != 1)
+		if (tokens[1][i] == '-')
 		{
-			fprintf(stderr, "L%d: usage: push integer\n", line_number);
-			free_dlistint(*stack);
-			exit(EXIT_FAILURE);
+			if (_isdigit(tokens[1][i + 1]) != 1)
+			{
+				fprintf(stderr, "L%d: usage: push integer\n", line_number);
+				free_dlistint(*stack);
+				exit(EXIT_FAILURE);
+			}
+			i++;
 		}
+		else if (!_isdigit(tokens[1][i]))
+        {
+            fprintf(stderr, "L%d: usage: push integer\n", line_number);
+            free_dlistint(*stack);
+            exit(EXIT_FAILURE);
+        }
 		i++;
 	}
 	helper_push(stack, line_number);
