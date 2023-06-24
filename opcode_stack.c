@@ -1,42 +1,6 @@
 #include "monty.h"
 
 /**
- * _push - function that add an element to the stack
- * @stack: pointer to the top of the stack
- * @line_number: the line number of the command
- * Return: Nothing
- */
-void _push(stack_t **stack, unsigned int line_number)
-{
-	int i = 0;
-
-	while (tokens[1][i] != '\0')
-	{
-		if (tokens[1][i] == '-')
-		{
-			if (_isdigit(tokens[1][i + 1]) != 1)
-			{
-				fprintf(stderr, "L%u: usage: push integer\n", line_number);
-				free_dlistint(*stack);
-				exit(EXIT_FAILURE);
-			}
-			i++;
-		}
-		else if (!_isdigit(tokens[1][i]))
-		{
-			fprintf(stderr, "L%u: usage: push integer\n", line_number);
-			free_dlistint(*stack);
-			exit(EXIT_FAILURE);
-		}
-		i++;
-	}
-	helper_push(stack, line_number);
-}
-
-
-
-
-/**
  * _pall - prints all the values on the stack, starting from the top
  * @stack: double pointer to head node
  * @line_number: line number of instruction
@@ -129,15 +93,15 @@ void _swap(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp;
 
-        if ((*stack) == NULL || (*stack)->next == NULL)
-        {
-                fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
-                free_dlistint(*stack);
-                exit(EXIT_FAILURE);
-        }
-        else
+	if ((*stack) == NULL || (*stack)->next == NULL)
 	{
-                temp = (*stack)->next;
+		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
+		free_dlistint(*stack);
+		exit(EXIT_FAILURE);
+	}
+	else
+	{
+		temp = (*stack)->next;
 		(*stack)->next = temp->next;
 		if (temp->next != NULL)
 			temp->next->prev = (*stack);
@@ -146,4 +110,22 @@ void _swap(stack_t **stack, unsigned int line_number)
 		temp->prev = NULL;
 		(*stack) = temp;
 	}
+}
+
+
+
+
+
+
+/**
+ * _nop - nop opcode does nothing
+ * @stack: double pointer to head node
+ * @line_number: line number of instruction
+ *
+ * Return: Void
+ */
+void _nop(stack_t **stack, unsigned int line_number)
+{
+	(void)(*stack);
+	(void)(line_number);
 }
