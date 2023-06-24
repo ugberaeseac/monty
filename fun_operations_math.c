@@ -99,7 +99,7 @@ void _mul(stack_t **stack, unsigned int line_number)
  */
 void _div(stack_t **stack, unsigned int line_number)
 {
-	int result;
+	int result = 0;
 
 	if ((*stack) == NULL || (*stack)->next == NULL)
 	{
@@ -107,7 +107,7 @@ void _div(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	else if ((*stack)->prev->n == 0 || (*stack)->n == 0)
+	else if ((*stack)->n == 0)
 	{
 		fprintf(stderr, "L%u: division by zero\n", line_number);
 		exit(EXIT_FAILURE);
@@ -136,7 +136,7 @@ void _div(stack_t **stack, unsigned int line_number)
  */
 void _mod(stack_t **stack, unsigned int line_number)
 {
-	int result;
+	int result = 0;
 
 	if ((*stack) == NULL || (*stack)->next == NULL)
 	{
@@ -144,12 +144,12 @@ void _mod(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	else if ((*stack)->prev->n == 0 || (*stack)->n == 0)
+	else if ((*stack)->n == 0)
 	{
 		fprintf(stderr, "L%u: division by zero\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-
+	
 	else
 	{
 		(*stack) = (*stack)->next;
