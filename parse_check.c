@@ -4,9 +4,11 @@
 /**
  * test_space_line - function to test the spaces
  * @line: pointer to the line in the file
+ * @line_number: instruction line number
+ *
  * Return: integer
  */
-int test_space_line(char *line)
+int test_space_line(char *line, unsigned int line_number)
 {
 	int i = 0;
 
@@ -16,7 +18,8 @@ int test_space_line(char *line)
 			return (1);
 		i++;
 	}
-	return (0);
+	fprintf(stderr, "L%u: usage: push integer\n", line_number);
+	exit(EXIT_FAILURE);
 }
 /**
  * parsing_line - function that parses the instruction
@@ -30,7 +33,7 @@ void parsing_line(char *line, unsigned int line_number)
 
 	(void)line_number;
 	tokens[0] = NULL;
-	if (test_space_line(line))
+	if (test_space_line(line, line_number))
 	{
 		tokens[0] = strtok(line, " \t\n");
 		if (strcmp(tokens[0], "push") == 0)
