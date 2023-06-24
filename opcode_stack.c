@@ -13,7 +13,7 @@ void _pall(stack_t **stack, unsigned int line_number)
 
 	(void)line_number;
 	if ((*stack) == NULL || stack == NULL)
-		return;
+		exit(EXIT_FAILURE);
 
 	temp = (*stack);
 	while (temp != NULL)
@@ -67,17 +67,10 @@ void _pop(stack_t **stack, unsigned int line_number)
 		free_dlistint(*stack);
 		exit(EXIT_FAILURE);
 	}
-
-	if ((*stack)->next == NULL)
-	{
-		free(temp);
-	}
-	else
-	{
-		(*stack) = (*stack)->next;
+	(*stack) = temp->next;
+	if (temp->next != NULL)
 		(*stack)->prev = NULL;
-		free(temp);
-	}
+	free(temp);
 
 }
 
