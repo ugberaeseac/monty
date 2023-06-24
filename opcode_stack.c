@@ -33,6 +33,9 @@ void _push(stack_t **stack, unsigned int line_number)
 	helper_push(stack, line_number);
 }
 
+
+
+
 /**
  * _pall - prints all the values on the stack, starting from the top
  * @stack: double pointer to head node
@@ -55,6 +58,10 @@ void _pall(stack_t **stack, unsigned int line_number)
 		temp = temp->next;
 	}
 }
+
+
+
+
 /**
  * _pint - prints all the values at the top the stack
  * @stack: double pointer to head node
@@ -110,3 +117,33 @@ void _pop(stack_t **stack, unsigned int line_number)
 
 }
 
+
+/**
+ * _swap -  swaps the top two elements of the stack
+ * @stack: double pointer to head node
+ * @line_number: line number of instruction
+ *
+ * Return: Void
+ */
+void _swap(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp;
+
+        if ((*stack) == NULL || (*stack)->next == NULL)
+        {
+                fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
+                free_dlistint(*stack);
+                exit(EXIT_FAILURE);
+        }
+        else
+	{
+                temp = (*stack)->next;
+		(*stack)->next = temp->next;
+		if (temp->next != NULL)
+			temp->next->prev = (*stack);
+		(*stack)->prev = temp;
+		temp->next = (*stack);
+		temp->prev = NULL;
+		(*stack) = temp;
+	}
+}
