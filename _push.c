@@ -45,7 +45,7 @@ void _push(stack_t **stack, unsigned int line_number)
 void _rotl(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp;
-	
+
 	(void)line_number;
 	temp = (*stack);
 	if ((*stack) == NULL || (*stack)->next == NULL)
@@ -60,5 +60,37 @@ void _rotl(stack_t **stack, unsigned int line_number)
 		(*stack) = (*stack)->next;
 		(*stack)->prev = NULL;
 		temp->next->next = NULL;
+	}
+}
+
+
+
+
+
+/**
+ * _rotr - rotates the stack to the bottom
+ * @stack: double pointer to head node
+ * @line_number: instruction/opcode line number
+ *
+ * Return: void
+ */
+void _rotr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp;
+
+	(void)line_number;
+	temp = (*stack);
+	if ((*stack) == NULL || (*stack)->next == NULL)
+		return;
+	else
+	{
+		while (temp->next != NULL)
+			temp = temp->next;
+
+		temp->next = (*stack);
+		temp->prev->next = NULL;
+		(*stack)->prev = temp;
+		temp->prev = NULL;
+		(*stack) = temp;
 	}
 }
