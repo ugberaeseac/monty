@@ -32,3 +32,31 @@ void _push(stack_t **stack, unsigned int line_number)
 	}
 	helper_push(stack, line_number);
 }
+
+
+
+/**
+ * _rotl - rotates the top of the stack
+ * @stack: double pointer to head node
+ * @line_number: instruction/opcode line number
+ *
+ * Return: void
+ */
+void _rotl(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp;
+	
+	(void)line_number;
+	temp = (*stack);
+	if ((*stack)->next != NULL)
+	{
+		while (temp->next != NULL)
+			temp = temp->next;
+
+		(*stack)->prev = temp;
+		temp->next = (*stack);
+		(*stack) = (*stack)->next;
+		(*stack)->prev = NULL;
+		temp->next->next = NULL;
+	}
+}
