@@ -66,6 +66,7 @@ void check_opcodes(stack_t **stack, unsigned int line_number)
 		{"pchar", _pchar},
 		{"pstr", _pstr},
 		{"swap", _swap},
+		{"rotl", _rotl},
 		{"nop", _nop},
 		{NULL, NULL}
 	};
